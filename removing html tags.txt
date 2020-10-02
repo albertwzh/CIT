@@ -1,0 +1,16 @@
+Dim nPos1 as integer
+Dim nPos2 as integer
+Dim NewString as String
+Dim Istart as integer
+NewString="<html>123<title>234</title></html>"
+nPos1=Instr(0,NewString,"<",0)
+ Do While nPos1 > 0 
+  nPos2 = InStr(nPos1 + 1, NewString, ">") 
+  If nPos2 > 0 Then 
+    NewString = Left(NewString, nPos1 - 1) & Mid(NewString, nPos2 + 1) 
+  Else 
+    Exit Do 
+  End If 
+  nPos1 = InStr(0,NewString, "<") 
+Loop 
+RetVal=NewString
